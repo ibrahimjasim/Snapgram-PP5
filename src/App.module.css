@@ -1,0 +1,9 @@
+.app{
+    font-family: "DM Sans", sans-serif;
+    background-color: antiquewhite;
+    min-height: 100vh;
+}
+
+div{
+    background-color: red;
+}
