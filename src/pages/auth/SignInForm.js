@@ -15,44 +15,47 @@ import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
 function SignInForm() {
-//   Add your component logic here
+    //   Add your component logic here
 
-  return (
-    <Row className={styles.Row}>
-      <Col className="my-auto p-0 p-md-2" md={6}>
-        <Container className={`${appStyles.Content} p-4 `}>
-        <Form>
-  <Form.Group controlId="username">
-    <Form.Label className="d-none">Username</Form.Label>
-    <Form.Control type="text" placeholder="Username" name="username"/>
-  </Form.Group>
+    return (
+        <Row className={styles.Row}>
+            <Col className="my-auto p-0 p-md-2" md={6}>
+                <Container className={`${appStyles.Content} p-4 `}>
+                    <Form>
+                        <Form.Group controlId="username">
+                            <Form.Label className="d-none">Username</Form.Label>
+                            <Form.Control type="text" placeholder="Username" name="username" />
+                        </Form.Group>
 
-  <Form.Group controlId="formBasicPassword">
-    <Form.Label className="d-none">Password</Form.Label>
-    <Form.Control type="password" placeholder="Password" name="password"/>
-  </Form.Group>
-  <Button variant="primary" type="submit">
-  Sign In
-  </Button>
-</Form>
-        </Container>
-        <Container className={`mt-3 ${appStyles.Content}`}>
-          <Link className={styles.Link} to="/signup">
-            Don't have an account? <span>Sign up now!</span>
-          </Link>
-        </Container>
-      </Col>
-      <Col
-        md={6}
-        className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
-      >
-        <Image
-          className={`${appStyles.FillerImage}`}
-          src={"https://codeinstitute.s3.amazonaws.com/AdvancedReact/hero.jpg"}
-        />
-      </Col>
-    </Row>
-  );
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Label className="d-none">Password</Form.Label>
+                            <Form.Control type="password" placeholder="Password" name="password" />
+                        </Form.Group>
+                        <Button
+                            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
+                            type="submit"
+                        >
+                            Sign In
+                        </Button>
+                    </Form>
+                </Container>
+                <Container className={`mt-3 ${appStyles.Content}`}>
+                    <Link className={styles.Link} to="/signup">
+                        Don't have an account? <span>Sign up now!</span>
+                    </Link>
+                </Container>
+            </Col>
+            <Col
+                md={6}
+                className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
+            >
+                <Image
+                    className={`${appStyles.FillerImage}`}
+                    src={"https://codeinstitute.s3.amazonaws.com/AdvancedReact/hero.jpg"}
+                />
+            </Col>
+        </Row>
+    );
 }
 
 export default SignInForm;
