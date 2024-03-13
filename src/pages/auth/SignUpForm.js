@@ -14,6 +14,13 @@ const SignUpForm = () => {
     password2: "",
   });
   const { username, password1, password2 } = signUpData;
+
+  const handleChange = (event) => {
+    setSignUpData({
+      ...signUpData,
+      [event.target.name]: event.target.value,
+    });
+  };
   return (
     <Row className={styles.Row}>
       <Col className="my-auto py-2 p-md-2" md={6}>
@@ -22,17 +29,17 @@ const SignUpForm = () => {
           <Form>
             <Form.Group controlId="username">
               <Form.Label className="d-none">Username</Form.Label>
-              <Form.Control type="text" placeholder="Username" name="username" className={styles.Input}  value={username}/>
+              <Form.Control type="text" placeholder="Username" name="username" className={styles.Input}  value={username} onChange={handleChange}/>
             </Form.Group>
 
             <Form.Group controlId="password1">
               <Form.Label className="d-none">Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" name="password1" className={styles.Input}  value={username}/>
+              <Form.Control type="password" placeholder="Password" name="password1" className={styles.Input}  value={username} onChange={handleChange}/>
             </Form.Group>
 
             <Form.Group controlId="password2">
               <Form.Label className="d-none">Confirm Password</Form.Label>
-              <Form.Control type="password" placeholder="Confirm Password" name="password2" className={styles.Input} value={username}/>
+              <Form.Control type="password" placeholder="Confirm Password" name="password2" className={styles.Input} value={username} onChange={handleChange}/>
             </Form.Group>
             <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}>
               Signup
