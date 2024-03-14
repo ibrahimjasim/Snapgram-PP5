@@ -20,7 +20,14 @@ function PostCreateForm() {
 
   const textFields = (
     <div className="text-center">
-      {/* Add your form fields here */}
+      <Form.Group>
+        <Form.Label>Title</Form.Label>
+        <Form.Control type="text" name="Title" />
+        </Form.Group>
+      <Form.Group>
+        <Form.Label>Content</Form.Label>
+        <Form.Control as="textarea" rows={6} name="content" />
+      </Form.Group>
 
     
     
