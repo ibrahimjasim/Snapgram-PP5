@@ -1,72 +1,76 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 
-import styles from "../../styles/CommentCreateEditForm.module.css";
-import Avatar from "../../components/Avatar";
-import { axiosRes } from "../../api/axiosDefaults";
+import appStyles from "../../App.module.css";
+import { useParams } from "react-router";
+import { axiosReq } from "../../api/axiosDefaults";
+import Post from "./Post";
+import Comment from "../comments/Comment";
 
-function CommentCreateForm(props) {
-  const { post, setPost, setComments, profileImage, profile_id } = props;
-  const [content, setContent] = useState("");
+import CommentCreateForm from "../comments/CommentCreateForm";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
-  const handleChange = (event) => {
-    setContent(event.target.value);
-  };
+function PostPage() {
+  const { id } = useParams();
+  const [post, setPost] = useState({ results: [] });
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const { data } = await axiosRes.post("/comments/", {
-        content,
-        post,
-      });
-      setComments((prevComments) => ({
-        ...prevComments,
-        results: [data, ...prevComments.results],
-      }));
-      setPost((prevPost) => ({
-        results: [
-          {
-            ...prevPost.results[0],
-            comments_count: prevPost.results[0].comments_count + 1,
-          },
-        ],
-      }));
-      setContent("");
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const currentUser = useCurrentUser();
+  const profile_image = currentUser?.profile_image;
+  const [comments, setComments] = useState({ results: [] });
+
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const [{ data: post }, { data: comments }] = await Promise.all([
+          axiosReq.get(`/posts/${id}`),
+          axiosReq.get(`/comments/?post=${id}`),
+        ]);
+        setPost({ results: [post] });
+        setComments(comments);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    handleMount();
+  }, [id]);
 
   return (
-    <Form className="mt-2" onSubmit={handleSubmit}>
-      <Form.Group>
-        <InputGroup>
-          <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profileImage} />
-          </Link>
-          <Form.Control
-            className={styles.Form}
-            placeholder="my comment..."
-            as="textarea"
-            value={content}
-            onChange={handleChange}
-            rows={2}
-          />
-        </InputGroup>
-      </Form.Group>
-      <button
-        className={`${styles.Button} btn d-block ml-auto`}
-        disabled={!content.trim()}
-        type="submit"
-      >
-        post
-      </button>
-    </Form>
+    <Row className="h-100">
+      <Col className="py-2 p-0 p-lg-2" lg={8}>
+        <p>Popular profiles for mobile</p>
+        <Post {...post.results[0]} setPosts={setPost} postPage />
+        <Container className={appStyles.Content}>
+          {currentUser ? (
+            <CommentCreateForm
+              profile_id={currentUser.profile_id}
+              profileImage={profile_image}
+              post={id}
+              setPost={setPost}
+              setComments={setComments}
+            />
+          ) : comments.results.length ? (
+            "Comments"
+          ) : null}
+          {comments.results.length ? (
+            comments.results.map((comment) => (
+              <Comment key={comment.id} {...comment} />
+            ))
+          ) : currentUser ? (
+            <span>No comments yet, be the first to comment!</span>
+          ) : (
+            <span>No comments... yet</span>
+          )}
+        </Container>
+      </Col>
+      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
+        Popular profiles for desktop
+      </Col>
+    </Row>
   );
 }
 
-export default CommentCreateForm;
+export default PostPage;
