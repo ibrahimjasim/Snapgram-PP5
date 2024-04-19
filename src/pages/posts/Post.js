@@ -21,6 +21,7 @@ const Post = (props) => {
     comments_count,
     likes_count,
     like_id,
+    saved_id, 
     title,
     content,
     image,
@@ -78,6 +79,40 @@ const Post = (props) => {
     }
   };
 
+  // Function to save a post
+  const handleSavePost = async () => {
+    try {
+      const { data } = await axiosRes.post("/saved/", { post: id }); // Adjusted endpoint if needed
+      setPosts((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? { ...post, saved_id: data.id }
+            : post;
+        }),
+      }));
+    } catch (err) {
+      // console.error("Error saving post:", err);
+    }
+  };
+
+  // Function to remove saved
+  const handleUnsavePost = async () => {
+    try {
+      await axiosRes.delete(`/saved/${saved_id}/`); // Adjusted endpoint if needed
+      setPosts((prevPosts) => ({
+        ...prevPosts,
+        results: prevPosts.results.map((post) => {
+          return post.id === id
+            ? { ...post, saved_id: null }
+            : post;
+        }),
+      }));
+    } catch (err) {
+      // console.error("Error removing saved post:", err);
+    }
+  };
+
   return (
     <Card className={styles.Post}>
       <Card.Body>
@@ -132,6 +167,15 @@ const Post = (props) => {
             <i className="far fa-comments" />
           </Link>
           {comments_count}
+          {saved_id ? (
+            <span onClick={handleUnsavePost}>
+              <i className="fas fa-bookmark" /> {/* Optionally change icon */}
+            </span>
+          ) : (
+            <span onClick={handleSavePost}>
+              <i className="far fa-bookmark" /> {/* Optionally change icon */}
+            </span>
+          )}
         </div>
       </Card.Body>
     </Card>
