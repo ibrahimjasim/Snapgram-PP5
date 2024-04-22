@@ -59,7 +59,7 @@ const NavBar = () => {
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/bookmarked"
+        to="/saved"
       >
         <i className="fa-solid fa-bookmark" />Saved
       </NavLink>

@@ -21,26 +21,50 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function PostsPage({ message, filter = "" }) {
   const [posts, setPosts] = useState({ results: [] });
+  const [savedPosts,setSavedPosts]=useState([])
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
   const [query, setQuery] = useState("");
 
   const currentUser = useCurrentUser();
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const { data } = await axiosReq.get(`/posts/?${filter}search=${query}`);
-        setPosts(data);
-        setHasLoaded(true);
-      } catch (err) {
+  console.log(currentUser)
+  const fetchPosts = async () => {
+    try {
+      const { data } = await axiosReq.get(`/posts/?${filter}search=${query}`);
+      let savedPosts=await fetchSavedPosts()
+      let finalData=data
+      for(let post of finalData.results){
+        for(let sP of savedPosts){
+          if(post.id==sP.post){
+            post.saved_id=sP.post
+            post.savedItemId=sP.id
+          }
+        }
       }
-    };
+      setPosts(finalData);
+      setHasLoaded(true);
+    } catch (err) {
+    }
+  };
+  const fetchSavedPosts=async()=>{
+    try {
+      const { data } = await axiosReq.get(`/saved`);
+      console.log(data)
+      let filterFinalUserSpecficSavedPosts=data.results.filter((postItem)=>currentUser.username===postItem.owner)
+   
+      return filterFinalUserSpecficSavedPosts
+    } catch (err) {
+    }
+  }
+  useEffect(() => {
+   
 
     setHasLoaded(false);
     const timer = setTimeout(() => {
       fetchPosts();
+   
+
     }, 1000);
 
     return () => {
@@ -71,7 +95,7 @@ function PostsPage({ message, filter = "" }) {
             {posts.results.length ? (
               <InfiniteScroll
                 children={posts.results.map((post) => (
-                  <Post key={post.id} {...post} setPosts={setPosts} />
+                  <Post key={post.id} {...post} setPosts={setPosts} fetchOnceAgain={fetchPosts} />
                 ))}
                 dataLength={posts.results.length}
                 loader={<Asset spinner />}

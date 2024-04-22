@@ -15,6 +15,7 @@ import { MoreDropdown } from "../../components/MoreDropdown";
 const Post = (props) => {
   const {
     id,
+    savedItemId,
     owner,
     profile_id,
     profile_image,
@@ -28,6 +29,7 @@ const Post = (props) => {
     updated_at,
     postPage,
     setPosts,
+    fetchOnceAgain
   } = props;
 
   const currentUser = useCurrentUser();
@@ -37,7 +39,6 @@ const Post = (props) => {
   const handleEdit = () => {
     history.push(`/posts/${id}/edit`);
   };
-
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/posts/${id}/`);
@@ -91,6 +92,7 @@ const Post = (props) => {
             : post;
         }),
       }));
+      fetchOnceAgain()
     } catch (err) {
       // console.error("Error saving post:", err);
     }
@@ -99,7 +101,7 @@ const Post = (props) => {
   // Function to remove saved
   const handleUnsavePost = async () => {
     try {
-      await axiosRes.delete(`/saved/${saved_id}/`); // Adjusted endpoint if needed
+      await axiosRes.delete(`/saved/${savedItemId}/`); // Adjusted endpoint if needed
       setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post) => {
@@ -108,6 +110,7 @@ const Post = (props) => {
             : post;
         }),
       }));
+      fetchOnceAgain()
     } catch (err) {
       // console.error("Error removing saved post:", err);
     }
