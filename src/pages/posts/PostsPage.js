@@ -21,7 +21,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function PostsPage({ message, filter = "" }) {
   const [posts, setPosts] = useState({ results: [] });
-  const [savedPosts,setSavedPosts]=useState([])
+
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
@@ -32,38 +32,43 @@ function PostsPage({ message, filter = "" }) {
   const fetchPosts = async () => {
     try {
       const { data } = await axiosReq.get(`/posts/?${filter}search=${query}`);
-      let savedPosts=await fetchSavedPosts()
-      let finalData=data
-      for(let post of finalData.results){
-        for(let sP of savedPosts){
-          if(post.id==sP.post){
-            post.saved_id=sP.post
-            post.savedItemId=sP.id
+
+      let savedPosts = await fetchSavedPosts()
+      let finalData = data
+      if (savedPosts) {
+        for (let post of finalData.results) {
+          for (let sP of savedPosts) {
+            if (post.id === sP.post) {
+              post.saved_id = sP.post
+              post.savedItemId = sP.id
+            }
           }
         }
+
       }
       setPosts(finalData);
       setHasLoaded(true);
     } catch (err) {
+      console.log(err)
     }
   };
-  const fetchSavedPosts=async()=>{
+  const fetchSavedPosts = async () => {
     try {
       const { data } = await axiosReq.get(`/saved`);
       console.log(data)
-      let filterFinalUserSpecficSavedPosts=data.results.filter((postItem)=>currentUser.username===postItem.owner)
-   
+      let filterFinalUserSpecficSavedPosts = data.results.filter((postItem) => currentUser.username === postItem.owner)
+
       return filterFinalUserSpecficSavedPosts
     } catch (err) {
     }
   }
   useEffect(() => {
-   
+
 
     setHasLoaded(false);
     const timer = setTimeout(() => {
       fetchPosts();
-   
+
 
     }, 1000);
 

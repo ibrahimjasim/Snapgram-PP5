@@ -14,6 +14,8 @@ import ProfilePage from "./pages/profiles/ProfilePage";
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
+import AiChat from "./pages/aichat/Aichat";
+
 
 function App() {
   const currentUser = useCurrentUser();
@@ -67,6 +69,7 @@ function App() {
           <Route exact path="/posts/:id" render={() => <PostPage />} />
           <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+          <Route exact path="/ai-chat" render={()=><AiChat/>}/>
           <Route
             exact
             path="/profiles/:id/edit/username"

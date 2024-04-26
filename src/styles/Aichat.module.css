@@ -1,0 +1,148 @@
+.ai_chat_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.empty_response {
+    margin: auto;
+    width: fit-content;
+    font-size: 1.75rem;
+    margin-top: 25vh;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.chat_box {
+    width: 95vw;
+    min-height: 80vh;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    /* background-color: #202021; */
+}
+
+.messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 65px;
+    height: 117px;
+    position: relative;
+    margin: auto;
+}
+
+.loader:before,
+.loader:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #ff8001;
+    box-shadow: 0 0 0 50px;
+    clip-path: polygon(100% 0,
+            23% 46%,
+            46% 44%,
+            15% 69%,
+            38% 67%,
+            0 100%,
+            76% 57%,
+            53% 58%,
+            88% 33%,
+            60% 37%);
+}
+
+.loader:after {
+    animation: l8 1s infinite;
+    transform: perspective(300px) translateZ(0px);
+}
+
+@keyframes l8 {
+    to {
+        transform: perspective(300px) translateZ(180px);
+        opacity: 0;
+    }
+}
+
+.message p {
+    margin: 0;
+}
+
+.message_right {
+  
+    width: 100%;
+    font-size: 20px;
+    align-self: flex-end;
+}
+
+.question_para {
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 20px;
+    width: fit-content;
+
+}
+
+.answer_para {
+    background-color: #0d0c0c;
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 20px;
+    width: fit-content;
+    max-width: 100%;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-left: auto;
+    color: #ffffff;
+}
+
+.input {
+    display: flex;
+    padding: 10px;
+}
+
+.input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.input button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.input button:hover {
+    background-color: #0056b3;
+}
+
+.message_right_box {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+}
+
+.message_right_box>img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
