@@ -1,22 +1,32 @@
 .NavBar {
-    background-color: #5fb4e6;
-    border: 1px solid #8d8d97;
-  }
-  
-  .NavLink {
-    padding: 5px;
-    text-align: center;
-    align-items: center;
-    display: flex;
-    
-  }
-  .NavLink i {
-    align-items: center;
-    display: flex;
-    padding: 15px;
-  }
-  
-  .Active i {
-    color: #9cb221;
-    
-  }
+  background-color: #5fb4e6;
+  border: 1px solid #8d8d97;
+}
+
+.NavLink {
+  padding: 5px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+
+}
+
+.NavLink i {
+  align-items: center;
+  display: flex;
+  padding: 15px;
+}
+
+.logo {
+  font-family: "Yellowtail", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2rem;
+  padding-bottom: 15px;
+
+}
+
+.Active i {
+  color: #9cb221;
+
+}

@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
-import logo from "../assets/logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
 import {
@@ -105,8 +104,8 @@ const NavBar = () => {
     <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed="top">
       <Container>
         <NavLink to="/">
-          <Navbar.Brand>
-            <img src={logo} alt="logo" height="55" />
+          <Navbar.Brand className={styles.logo}> Snapgram
+            
           </Navbar.Brand>
         </NavLink>
         {currentUser && addPostIcon}
