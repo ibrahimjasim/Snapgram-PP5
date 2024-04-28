@@ -1,6 +1,6 @@
 .NavBar {
-  background-color: #5fb4e6;
-  border: 1px solid #8d8d97;
+  background-color: #C6B9B7;
+  border: 1px solid #171729;
 }
 
 .NavLink {
@@ -15,6 +15,13 @@
   align-items: center;
   display: flex;
   padding: 15px;
+  color: #171729;
+  transition: color 0.3s ease;
+}
+
+.NavLink i:hover {
+  color: #4A90E2; 
+  cursor: pointer; 
 }
 
 .logo {
@@ -26,6 +33,6 @@
 
 
 .Active i {
-  color: #9cb221;
+  color: #ffffff;
 
 }
