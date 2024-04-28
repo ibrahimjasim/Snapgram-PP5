@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&family=Yellowtail&display=swap');
 .App {
   font-family: "DM Sans", sans-serif;
-  background-color: #f8f8f8;
+  background-color: #B7998F;
   min-height: 100vh;
 }
 
@@ -10,10 +10,10 @@
 }
 
 .Content {
-  background-color: #ffffff;
+  background-color: #E9E6EC;
   padding: 10px;
   border-radius: 2px;
-  border: 1px solid #dadadf;
+  border: 1px solid #555555 ;
 }
 
 .FillerImage {
