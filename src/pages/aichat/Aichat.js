@@ -20,7 +20,7 @@ const AiChat = () => {
             model: "gpt-3.5-turbo",
             messages: [{
                 role: "user",
-                content: question // Replace this with your actual prompt
+                content: question 
             }],
             temperature: 1,
             max_tokens: 256,
@@ -34,7 +34,7 @@ const AiChat = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${process.env.REACT_APP_OPEN_AI_API_KEY}` // Replace with your actual API key
+                    'Authorization': `Bearer ${process.env.REACT_APP_OPEN_AI_API_KEY}`
                 },
                 body: JSON.stringify(data)
             });
@@ -70,7 +70,7 @@ const AiChat = () => {
             <div className={styles.chat_box}>
                 <div className={styles.messages}>
                     {chatResponses.length === 0 && (
-                        <pre className={styles.empty_response}>How can I help you today?😁</pre>
+                        <pre className={styles.empty_response}>Chat with My Ai.🤖</pre>
                     )}
                     {chatResponses.map((el) => (
                         <div key={el.id} className={styles.message_right}>
