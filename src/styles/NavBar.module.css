@@ -5,12 +5,18 @@
   
   .NavLink {
     padding: 5px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    
+  }
+  .NavLink i {
+    align-items: center;
+    display: flex;
+    padding: 15px;
   }
   
   .Active i {
     color: #9cb221;
-  }
-
-  .aiIcon{
-    background-color: red;
+    
   }

@@ -68,7 +68,7 @@ const NavBar = () => {
         activeClassName={styles.Active}
         to="/ai-chat"
       >
-        <i className="fa-regular fa-envelope" /> Bot Ai
+        <i class="fas fa-robot"></i> Bot Ai
       </NavLink>
 
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
