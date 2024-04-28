@@ -11,7 +11,7 @@ XXXXXXXXXXXXX
 Snapgram is an Instagram/Snapchat reminiscent social media sharing application. The app is creeated with the aim of to enhancing social connections both locally and globally. Snapgram also allows users to stay up to date with friends, family and followers in a controlled and genuine environment
 
 
-## Contents
+## Contents XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 -   [Picagram](#picagram)
     -   [Intro](#intro)
@@ -148,7 +148,8 @@ This has become familiar with a majority of social media users thus motivating t
 A straight forward, elegant and familiar logo spelling out the name "Snapgram". 
 The cursive feels more traditional and intimate, creating trust and a nostalgic feeling for the user. 
 
-
+ ---
+ 
 ## Database 
 
 #### User Profile
@@ -187,6 +188,7 @@ Allows user to write, edit, remove and view comments on posts. It is the core on
 #### Search bar
 Embedded on the very top as to make it easy for the user to find posts. 
  
+---
 
 ## Features
 
@@ -261,34 +263,49 @@ The editing can be cancelled at anytime by presing cancel.
 XXXXXXXXXXX IImage of EDIT 3    &   EDIT 4
 
 
+### Components Used
+This project features several reusable components that enhance functionality and user experience across various sections of the site:
+
+- axiosDefault.js: Simplifies communication with the backend API.
+- Asset.js: Provides assets like the loading spinner and user avatar used throughout the site.
+- DropdownMenu.js: Enables users to edit or delete their Articles, Events, and Posts.
+- CurrentUserContext.js: Checks the logged-in status of users to customize available functionalities.
+- ProfileDataContext.js: Facilitates the following and unfollowing of other users within the PopProf and ProfPage components.
+- ToggleCollapse.js: Currently used in the NavBarMini, this component is designed for potential future use in other dropdown menus to automate the collapse of elements with a mouse click.
+- useRedirect.js: Manages redirections for unauthorized users attempting to access restricted pages.
+- utils.js: Supports all components that implement the Infinite Scroll feature, enhancing their functionality.
 
 
-### Languages
-- Python XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+### Languages Used
+- CSS3
+- JavaScript
+- HTML5
+- SQL - Postgres
+- HTML5
+- 
 
-### Frameworks
-- Django REST XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+### Frameworks & Programs Used
 
-### Database
-- ElephantSQL XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+The development of the project involved a range of tools and resources to ensure a comprehensive and effective build:
 
-### Supporting Libraries and Packages XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-- cloudinary, django-cloudinary-storage: Used for managing the storage and delivery of images through Cloudinary, a cloud-based service.
-- dj-database-url: Utility to help you load your database into your dictionary from the DATABASE_URL environment variable.
-- dj-rest-auth, Django-allauth, djangorestframework-simplejwt, PyJWT, oauthlib, requests-oauthlib, python3-openid: These libraries are used for managing user authentication, providing support for JWT tokens, OAuth and OpenID.
-- Django, djangorestframework, django-filter: These are core components of the Django web framework, used for building the backend of the Travel Tickr application.
-- gunicorn: A Python WSGI HTTP server for UNIX, used in deploying the application.
-- Pillow: An imaging library in Python, allowing support for opening, manipulating, and saving many different image file formats.
-- psycopg2: PostgreSQL adapter for Python, enabling Python to connect to the PostgreSQL database.
-- sqlparse: A non-validating SQL parser module for Python, it provides support for parsing, splitting and formatting SQL statements.
+- ReactJS: Utilized to construct the components that form the front-end application.
+- Django: Employed to develop the backend database, functioning as an API for the front-end.
+- GitPod: Used to build the project, creating JSX and CSS files before pushing them to GitHub.
+- GitHub: Served as the storage for the project repository, facilitating submission.
+- React-Bootstrap: A styling library that enhanced the site layout, introduced during our program.
+- Google Fonts: Selected for the website’s typography.
+- Font Awesome: Integrated to add icons to the social links in the footer and navigation sections.
+- Balsamiq: Applied to create project mockups before development commenced.
+- DrawSQL: An interactive tool used for creating database mock-ups to visualize model relationships.
+- Am I Responsive?: Ensured the project's appearance was optimized across various devices.
+- Favicon: Provided the necessary code and image for the browser tab icon.
 
-## Database ERD XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-An entity relationship diagram was created to assist in the visualization of the
-database structure. This visualization was important to clarify what data would
-be needed in order to provide the functionality desired within the application.
-Below is an image of the Created ERD with the relationships between models.
+### Deployed to Database
+- ElephantSQL
+- Heroku
 
+---
 
 
 ## Testing
