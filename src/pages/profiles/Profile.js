@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { Button } from "react-bootstrap";
 import { useSetProfileData } from "../../contexts/ProfileDataContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserPlus, faUserMinus } from '@fortawesome/free-solid-svg-icons';
 
 const Profile = (props) => {
   const { profile, mobile, imageSize = 55 } = props;
@@ -37,14 +39,16 @@ const Profile = (props) => {
               className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
               onClick={() => handleUnfollow(profile)}
             >
-              unfollow
+              {/* Replace text with minus icon for unfollow */}
+              <FontAwesomeIcon icon={faUserMinus} />
             </Button>
           ) : (
             <Button
               className={`${btnStyles.Button} ${btnStyles.Black}`}
               onClick={() => handleFollow(profile)}
             >
-              follow
+              {/* Replace text with plus icon for follow */}
+              <FontAwesomeIcon icon={faUserPlus} />
             </Button>
           ))}
       </div>

@@ -35,7 +35,7 @@ const NavBar = () => {
       activeClassName={styles.Active}
       to="/posts/create"
     >
-      <i className="far fa-plus-square"></i>Add post
+      <i className="far fa-plus-square"></i>
     </NavLink>
 
   );
@@ -46,32 +46,32 @@ const NavBar = () => {
         activeClassName={styles.Active}
         to="/feed"
       >
-        <i className="fas fa-stream"></i>Feed
+        <i className="fas fa-stream"></i>
       </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/liked"
       >
-        <i className="fas fa-heart"></i>Liked
+        <i className="fas fa-heart"></i>
       </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/saved"
       >
-        <i className="fa-solid fa-bookmark" />Saved
+        <i className="fa-solid fa-bookmark" />
       </NavLink>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/ai-chat"
       >
-        <i class="fas fa-robot"></i> Bot Ai
+        <i class="fas fa-robot"></i>
       </NavLink>
 
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-        <i className="fas fa-sign-out-alt"></i>Sign out
+        <i className="fas fa-sign-out-alt"></i>
       </NavLink>
       <NavLink
         className={styles.NavLink}
@@ -88,14 +88,14 @@ const NavBar = () => {
         activeClassName={styles.Active}
         to="/signin"
       >
-        <i className="fas fa-sign-in-alt"></i>Sign in
+        <i className="fas fa-sign-in-alt"></i>
       </NavLink>
       <NavLink
         to="/signup"
         className={styles.NavLink}
         activeClassName={styles.Active}
       >
-        <i className="fas fa-user-plus"></i>Sign up
+        <i className="fas fa-user-plus"></i>
       </NavLink>
     </>
   );
@@ -104,8 +104,8 @@ const NavBar = () => {
     <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed="top">
       <Container>
         <NavLink to="/">
-          <Navbar.Brand className={styles.logo}> Snapgram
-            
+          <Navbar.Brand className={styles.logo}>
+             Snapgram
           </Navbar.Brand>
         </NavLink>
         {currentUser && addPostIcon}
@@ -118,7 +118,7 @@ const NavBar = () => {
               activeClassName={styles.Active}
               to="/"
             >
-              <i className="fas fa-home"></i>Home
+              <i className="fas fa-home"></i>
             </NavLink>
 
             {currentUser ? loggedInIcons : loggedOutIcons}

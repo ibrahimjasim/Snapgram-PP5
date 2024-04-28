@@ -1,12 +1,12 @@
 .Button {
-    font-size: 0.8rem;
-    align-self: center;
-    border-radius: 100px;
-    border-color: transparent;
-    padding: 4px 10px;
-    margin-left: 2px;
-    margin-right: 2px;
-    min-width: 75px;
+  font-size: 1rem;
+  align-self: center;
+  border: none; 
+  padding: 3px; 
+  margin-left: 2px;
+  margin-right: 10px;
+  background: none; 
+  cursor: pointer; 
   }
   
   .Button:hover {
@@ -50,8 +50,7 @@
   .BlackOutline:hover {
     /* background-color: #242a3d;
     color: white; */
-    background-color: #242a3d;
-    color: aliceblue;
+    color: rgb(11, 11, 11);
   }
   
   .Black:hover,
@@ -61,6 +60,7 @@
     border-color: #242a3d; */
     background-color: aliceblue;
     color: #242a3d;
+    transform: translateY(-5px);
   }
   
   .Bright {
