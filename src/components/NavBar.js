@@ -77,6 +77,14 @@ const NavBar = () => {
       >
         <i class="fa-solid fa-calendar-days"></i>
       </NavLink>
+      
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/contacts"
+      >
+        <i class="fa-regular fa-address-card"></i>
+      </NavLink>
 
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>

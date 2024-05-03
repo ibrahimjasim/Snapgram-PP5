@@ -18,7 +18,7 @@ function ContactForm() {
     e.preventDefault();
     try {
       // Update the URL to your Django API endpoint
-      const response = await axios.post('http://localhost:8000/contacts/', contact);
+      const response = await axios.post('https://snapgram-api-df7c5b682dbd.herokuapp.com/', contact);
       alert('Contact saved successfully!');
       console.log(response.data);
     } catch (error) {

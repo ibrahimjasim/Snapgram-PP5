@@ -16,6 +16,7 @@ import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import AiChat from "./pages/aichat/Aichat";
 import EventsPage from "./pages/events/EventsPage";
+import ContactForm from "./pages/contacts/ContactForm";
 
 
 function App() {
@@ -73,6 +74,7 @@ function App() {
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route exact path="/ai-chat" render={()=><AiChat/>}/>
           <Route exact path="/events" render={()=><EventsPage/>}/>
+          <Route exact path="/contacts" render={()=><ContactForm/>}/>
 
           <Route
             exact
