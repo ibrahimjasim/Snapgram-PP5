@@ -15,6 +15,7 @@ import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import AiChat from "./pages/aichat/Aichat";
+import EventsPage from "./pages/events/EventsPage";
 
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
                 message="No saved posts found. Save some posts to see them here."
                 filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`}
               />
+
             )} />
 
           <Route exact path="/signin" render={() => <SignInForm />} />
@@ -70,6 +72,8 @@ function App() {
           <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route exact path="/ai-chat" render={()=><AiChat/>}/>
+          <Route exact path="/events" render={()=><EventsPage/>}/>
+
           <Route
             exact
             path="/profiles/:id/edit/username"
