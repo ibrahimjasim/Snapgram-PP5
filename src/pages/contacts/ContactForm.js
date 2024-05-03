@@ -1,71 +1,113 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { axiosReq } from "../../api/axiosDefaults";
+import { useHistory } from 'react-router-dom';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import styles from "../../styles/ContactForm.module.css"
 
 function ContactForm() {
+  const currentUser = useCurrentUser();
+
   const [contact, setContact] = useState({
     name: '',
     email: '',
     phone: '',
     address: '',
-    message: ''
+    message: '',
+    owner: ""
   });
+  const [errors, setErrors] = useState({});
+  const [contacts, setContacts] = useState([])
+  const history = useHistory();
 
+  const fetchContacts = async () => {
+    try {
+      const { data } = await axiosReq.get("/contacts/");
+      setContacts(data.results)
+    } catch (error) {
+
+    }
+  }
+
+
+
+
+
+  console.log(contacts, "contacts from the dab")
+
+
+  useEffect(() => {
+    fetchContacts()
+  }, [])
   const handleChange = (e) => {
-    setContact({...contact, [e.target.name]: e.target.value});
+    setContact({ ...contact, [e.target.name]: e.target.value, owner: currentUser.profile_id });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    console.log(contact)
+    Object.keys(contact).forEach(key => formData.append(key, contact[key]));
+
     try {
-      // Update the URL to your Django API endpoint
-      const response = await axios.post('https://snapgram-api-df7c5b682dbd.herokuapp.com/', contact);
-      alert('Contact saved successfully!');
-      console.log(response.data);
-    } catch (error) {
-      alert('Failed to save contact');
-      console.error(error);
+      const { data } = await axiosReq.post("/contacts/", formData);
+      alert("Message has been sent")
+
+    } catch (err) {
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        value={contact.name}
-        onChange={handleChange}
-        placeholder="Name"
-        required
-      />
-      <input
-        type="email"
-        name="email"
-        value={contact.email}
-        onChange={handleChange}
-        placeholder="Email"
-        required
-      />
-      <input
-        type="text"
-        name="phone"
-        value={contact.phone}
-        onChange={handleChange}
-        placeholder="Phone"
-      />
-      <textarea
-        name="address"
-        value={contact.address}
-        onChange={handleChange}
-        placeholder="Address"
-      />
-      <textarea
-        name="message"
-        value={contact.message}
-        onChange={handleChange}
-        placeholder="Message"
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      <form className={styles.contact_form} onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          value={contact.name}
+          onChange={handleChange}
+          placeholder="Name"
+          required
+        />
+        {errors.name && <p>{errors.name}</p>}
+        <input
+          type="email"
+          name="email"
+          value={contact.email}
+          onChange={handleChange}
+          placeholder="Email"
+          required
+        />
+        {errors.email && <p>{errors.email}</p>}
+        <input
+          type="text"
+          name="phone"
+          value={contact.phone}
+          onChange={handleChange}
+          placeholder="Phone"
+        />
+        {errors.phone && <p>{errors.phone}</p>}
+        <textarea
+          name="address"
+          value={contact.address}
+          onChange={handleChange}
+          placeholder="Address"
+        />
+        {errors.address && <p>{errors.address}</p>}
+        <textarea
+          name="message"
+          value={contact.message}
+          onChange={handleChange}
+          placeholder="Message"
+        />
+        {errors.message && <p>{errors.message}</p>}
+        <button type="submit">Submit</button>
+      </form>
+      <div>
+
+      </div>
+    </>
   );
 }
 

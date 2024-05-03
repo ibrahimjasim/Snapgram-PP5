@@ -20,6 +20,7 @@ import PopularProfiles from "../profiles/PopularProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function PostsPage({ message, filter = "" }) {
+  console.log(message,"message",filter,"filter")
   const [posts, setPosts] = useState({ results: [] });
 
   const [hasLoaded, setHasLoaded] = useState(false);

@@ -170,15 +170,7 @@ const Post = (props) => {
             <i className="far fa-comments" />
           </Link>
           {comments_count}
-          {saved_id ? (
-            <span onClick={handleUnsavePost}>
-              <i className="fas fa-bookmark" /> {/* Optionally change icon */}
-            </span>
-          ) : (
-            <span onClick={handleSavePost}>
-              <i className="far fa-bookmark" /> {/* Optionally change icon */}
-            </span>
-          )}
+        
         </div>
       </Card.Body>
     </Card>
