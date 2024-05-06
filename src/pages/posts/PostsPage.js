@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
@@ -20,7 +20,7 @@ import PopularProfiles from "../profiles/PopularProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function PostsPage({ message, filter = "" }) {
-  console.log(message,"message",filter,"filter")
+  console.log(message, "message", filter, "filter")
   const [posts, setPosts] = useState({ results: [] });
 
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -29,40 +29,21 @@ function PostsPage({ message, filter = "" }) {
   const [query, setQuery] = useState("");
 
   const currentUser = useCurrentUser();
-  console.log(currentUser)
-  const fetchPosts = async () => {
+
+  const fetchPosts = useCallback(async () => {
     try {
       const { data } = await axiosReq.get(`/posts/?${filter}search=${query}`);
 
-      let savedPosts = await fetchSavedPosts()
-      let finalData = data
-      if (savedPosts) {
-        for (let post of finalData.results) {
-          for (let sP of savedPosts) {
-            if (post.id === sP.post) {
-              post.saved_id = sP.post
-              post.savedItemId = sP.id
-            }
-          }
-        }
 
-      }
+      let finalData = data
+
       setPosts(finalData);
       setHasLoaded(true);
     } catch (err) {
       console.log(err)
     }
-  };
-  const fetchSavedPosts = async () => {
-    try {
-      const { data } = await axiosReq.get(`/saved`);
-      console.log(data)
-      let filterFinalUserSpecficSavedPosts = data.results.filter((postItem) => currentUser.username === postItem.owner)
+  }, [filter, query]);
 
-      return filterFinalUserSpecficSavedPosts
-    } catch (err) {
-    }
-  }
   useEffect(() => {
 
 
@@ -76,7 +57,7 @@ function PostsPage({ message, filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query, pathname, currentUser]);
+  }, [filter, query, pathname, currentUser, fetchPosts]);
 
   return (
     <Row className="h-100">

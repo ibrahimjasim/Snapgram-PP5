@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory } from 'react-router-dom';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
@@ -16,28 +16,10 @@ function ContactForm() {
     owner: ""
   });
   const [errors, setErrors] = useState({});
-  const [contacts, setContacts] = useState([])
+
   const history = useHistory();
 
-  const fetchContacts = async () => {
-    try {
-      const { data } = await axiosReq.get("/contacts/");
-      setContacts(data.results)
-    } catch (error) {
 
-    }
-  }
-
-
-
-
-
-  console.log(contacts, "contacts from the dab")
-
-
-  useEffect(() => {
-    fetchContacts()
-  }, [])
   const handleChange = (e) => {
     setContact({ ...contact, [e.target.name]: e.target.value, owner: currentUser.profile_id });
   };
@@ -49,8 +31,8 @@ function ContactForm() {
     Object.keys(contact).forEach(key => formData.append(key, contact[key]));
 
     try {
-      const { data } = await axiosReq.post("/contacts/", formData);
-      alert("Message has been sent")
+       await axiosReq.post("/contacts/", formData);
+      history.push("/")
 
     } catch (err) {
       if (err.response?.status !== 401) {

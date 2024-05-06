@@ -15,21 +15,18 @@ import { MoreDropdown } from "../../components/MoreDropdown";
 const Post = (props) => {
   const {
     id,
-    savedItemId,
     owner,
     profile_id,
     profile_image,
     comments_count,
     likes_count,
     like_id,
-    saved_id, 
     title,
     content,
     image,
     updated_at,
     postPage,
     setPosts,
-    fetchOnceAgain
   } = props;
 
   const currentUser = useCurrentUser();
@@ -80,41 +77,7 @@ const Post = (props) => {
     }
   };
 
-  // Function to save a post
-  const handleSavePost = async () => {
-    try {
-      const { data } = await axiosRes.post("/saved/", { post: id }); // Adjusted endpoint if needed
-      setPosts((prevPosts) => ({
-        ...prevPosts,
-        results: prevPosts.results.map((post) => {
-          return post.id === id
-            ? { ...post, saved_id: data.id }
-            : post;
-        }),
-      }));
-      fetchOnceAgain()
-    } catch (err) {
-      // console.error("Error saving post:", err);
-    }
-  };
 
-  // Function to remove saved
-  const handleUnsavePost = async () => {
-    try {
-      await axiosRes.delete(`/saved/${savedItemId}/`); // Adjusted endpoint if needed
-      setPosts((prevPosts) => ({
-        ...prevPosts,
-        results: prevPosts.results.map((post) => {
-          return post.id === id
-            ? { ...post, saved_id: null }
-            : post;
-        }),
-      }));
-      fetchOnceAgain()
-    } catch (err) {
-      // console.error("Error removing saved post:", err);
-    }
-  };
 
   return (
     <Card className={styles.Post}>
@@ -170,7 +133,7 @@ const Post = (props) => {
             <i className="far fa-comments" />
           </Link>
           {comments_count}
-        
+
         </div>
       </Card.Body>
     </Card>

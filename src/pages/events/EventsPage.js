@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { axiosReq } from "../../api/axiosDefaults";
-import { useHistory } from 'react-router-dom';
+
 
 import styles from "../../styles/EventsPage.module.css"
+
 
 const EventsPage = () => {
   const [events, setEvents] = useState([]);
@@ -15,7 +16,7 @@ const EventsPage = () => {
       : ""
   });
   const [errors, setErrors] = useState({});
-  const history = useHistory();
+
   function isTodayBetweenDates(startDateStr, endDateStr) {
     // Parse the date strings directly into Date objects
     const startDate = new Date(startDateStr);
@@ -31,22 +32,23 @@ const EventsPage = () => {
 
   // Outputs true or false
 
-  function isPastStartDate(startDateStr) {
-  
-    // Parse the startDateStr into a Date object
-    const startDate = new Date(startDateStr);
 
-    // Get today's date with the time part reset to midnight
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    // Compare today's date with the start date
-    console.log(today, startDate)
-    return isTodayBetweenDates(today, startDate)
-  }
- 
   // Fetch events on component mount
-  const fetchEvents = async () => {
+  const fetchEvents = useCallback(async () => {
+    function isPastStartDate(startDateStr) {
+
+      // Parse the startDateStr into a Date object
+      const startDate = new Date(startDateStr);
+
+      // Get today's date with the time part reset to midnight
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      // Compare today's date with the start date
+      console.log(today, startDate)
+      return isTodayBetweenDates(today, startDate)
+    }
+
     try {
       const response = await axiosReq.get('events/');
       console.log(response.data)
@@ -56,12 +58,11 @@ const EventsPage = () => {
     } catch (error) {
       console.error('Error fetching events:', error);
     }
-  };
+  }, [])
   useEffect(() => {
 
-
     fetchEvents();
-  }, []);
+  }, [fetchEvents]);
 
   const handleInputChange = (e) => {
     setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
@@ -158,7 +159,7 @@ const EventsPage = () => {
             </div>
 
             <p>At {event.location} from {event.start_time} to {event.end_time}</p>
-            <a href={event.website} target='_blank'>Event Website</a>
+            <a href={event.website} target='_blank' rel='noreferrer'>Event Website</a>
 
           </div>
         ))}
