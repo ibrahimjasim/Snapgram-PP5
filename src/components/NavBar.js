@@ -61,7 +61,7 @@ const NavBar = () => {
         activeClassName={styles.Active}
         to="/ai-chat"
       >
-        <i class="fas fa-robot"></i>
+        <i className="fas fa-robot"></i>
       </NavLink>
 
       <NavLink
@@ -69,7 +69,7 @@ const NavBar = () => {
         activeClassName={styles.Active}
         to="/events"
       >
-        <i class="fa-solid fa-calendar-days"></i>
+        <i className="fa-solid fa-calendar-days"></i>
       </NavLink>
       
       <NavLink
@@ -77,7 +77,7 @@ const NavBar = () => {
         activeClassName={styles.Active}
         to="/contacts"
       >
-        <i class="fa-regular fa-address-card"></i>
+        <i className="fa-regular fa-address-card"></i>
       </NavLink>
 
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
