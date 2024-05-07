@@ -38,6 +38,44 @@
 
 }
 
+.event_delete_btn {
+    background-color: red;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    min-width: 70px;
+
+}
+
+.event_dropdown {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    width: fit-content;
+
+    float: right;
+}
+
+.event_edit_btn {
+    background-color: grey;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    min-width: 70px;
+
+}
+
+.event_item p,
+h1,
+h2 {
+    outline: none;
+    border: none;
+}
+
 .event_item>a {
     color: #E9E6EC;
 }

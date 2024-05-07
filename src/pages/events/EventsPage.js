@@ -3,6 +3,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 
 
 import styles from "../../styles/EventsPage.module.css"
+import EventDetails from './EventDetails';
 
 
 const EventsPage = () => {
@@ -148,20 +149,9 @@ const EventsPage = () => {
       </form>
       {errors.title && <p>{errors.title}</p>}
       <div className={styles.events_container}>
-        {events?.length !== 0 && events?.map(event => (
-          <div className={styles.event_item} key={event.id}>
-            <div className={styles.event_title_header}>
-              <div className={styles.event_price_wrapper}>
-                <h2>{event.title}</h2>
-                <p className={styles.price_text}>${event.admission_price}</p>
-              </div>
-              <p>{event.description}</p>
-            </div>
+        {events?.length !== 0 && events?.map(eventItem => (
+          <EventDetails fetchTheDataAgain={fetchEvents} key={eventItem.id} event={eventItem} />
 
-            <p>At {event.location} from {event.start_time} to {event.end_time}</p>
-            <a href={event.website} target='_blank' rel='noreferrer'>Event Website</a>
-
-          </div>
         ))}
       </div>
     </div>
