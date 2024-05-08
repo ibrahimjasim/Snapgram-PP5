@@ -18,6 +18,7 @@ import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
 
+
 function PostPage() {
   const { id } = useParams();
   const [post, setPost] = useState({ results: [] });
@@ -26,6 +27,7 @@ function PostPage() {
   const profile_image = currentUser?.profile_image;
   const [comments, setComments] = useState({ results: [] });
 
+   // Fetch post and comments data when the component mounts
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -33,6 +35,7 @@ function PostPage() {
           axiosReq.get(`/posts/${id}`),
           axiosReq.get(`/comments/?post=${id}`),
         ]);
+        // Update state with post and comments data
         setPost({ results: [post] });
         setComments(comments);
       } catch (err) {}

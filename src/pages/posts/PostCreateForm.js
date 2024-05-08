@@ -19,6 +19,7 @@ import btnStyles from "../../styles/Button.module.css";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
+// State to hold form data
 function PostCreateForm() {
   const [errors, setErrors] = useState({});
 
@@ -29,6 +30,7 @@ function PostCreateForm() {
   });
   const { title, content, image } = postData;
 
+  // Ref for image input
   const imageInput = useRef(null);
   const history = useHistory();
 
@@ -38,7 +40,7 @@ function PostCreateForm() {
       [event.target.name]: event.target.value,
     });
   };
-
+  // Handler for image input change
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
@@ -48,7 +50,7 @@ function PostCreateForm() {
       });
     }
   };
-
+  // Handler for form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -66,7 +68,7 @@ function PostCreateForm() {
       }
     }
   };
-
+  //JSX for text fields//
   const textFields = (
     <div className="text-center">
       <Form.Group>

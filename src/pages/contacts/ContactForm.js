@@ -6,7 +6,7 @@ import styles from "../../styles/ContactForm.module.css"
 
 function ContactForm() {
   const currentUser = useCurrentUser();
-
+    /* State to manage contact form data */
   const [contact, setContact] = useState({
     name: '',
     email: '',
@@ -15,15 +15,16 @@ function ContactForm() {
     message: '',
     owner: ""
   });
+  /* State to manage form errors */
   const [errors, setErrors] = useState({});
 
   const history = useHistory();
 
-
+   /* Update state based on form input changes */
   const handleChange = (e) => {
     setContact({ ...contact, [e.target.name]: e.target.value, owner: currentUser.profile_id });
   };
-
+  /* Submit form data to the server */
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();

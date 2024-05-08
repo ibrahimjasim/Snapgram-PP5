@@ -20,16 +20,17 @@ import PopularProfiles from "../profiles/PopularProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function PostsPage({ message, filter = "" }) {
+   // State to manage posts data
   console.log(message, "message", filter, "filter")
   const [posts, setPosts] = useState({ results: [] });
-
+ // State to track whether posts have been loaded
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
   const [query, setQuery] = useState("");
 
   const currentUser = useCurrentUser();
-
+  // Function to fetch posts data from the server
   const fetchPosts = useCallback(async () => {
     try {
       const { data } = await axiosReq.get(`/posts/?${filter}search=${query}`);
@@ -44,6 +45,7 @@ function PostsPage({ message, filter = "" }) {
     }
   }, [filter, query]);
 
+  // Effect to fetch posts data when filter, search query, pathname, or currentUser changes
   useEffect(() => {
 
 

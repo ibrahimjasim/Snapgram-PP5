@@ -19,7 +19,7 @@ const EventsPage = () => {
   const [errors, setErrors] = useState({});
 
   function isTodayBetweenDates(startDateStr, endDateStr) {
-    // Parse the date strings directly into Date objects
+    /* Parse the date strings directly into Date objects*/
     const startDate = new Date(startDateStr);
     const endDate = new Date(endDateStr);
 

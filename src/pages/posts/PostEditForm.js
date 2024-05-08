@@ -18,6 +18,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 function PostEditForm() {
   const [errors, setErrors] = useState({});
 
+  // State to hold form data
   const [postData, setPostData] = useState({
     title: "",
     content: "",
@@ -29,12 +30,15 @@ function PostEditForm() {
   const history = useHistory();
   const { id } = useParams();
 
+  // Fetch post data when the component mounts
   useEffect(() => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/posts/${id}/`);
         const { title, content, image, is_owner } = data;
 
+        // Check if the current user is the owner of the post
+        // If not, redirect to the homepage
         is_owner ? setPostData({ title, content, image }) : history.push("/");
       } catch (err) {
       }
@@ -42,7 +46,8 @@ function PostEditForm() {
 
     handleMount();
   }, [history, id]);
-
+    
+  // Handler for input changes
   const handleChange = (event) => {
     setPostData({
       ...postData,

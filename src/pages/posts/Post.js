@@ -13,6 +13,7 @@ import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 
 const Post = (props) => {
+   // Destructure props
   const {
     id,
     owner,
@@ -29,13 +30,16 @@ const Post = (props) => {
     setPosts,
   } = props;
 
+  // Get current user
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
 
+  // Function to handle editing of the post
   const handleEdit = () => {
     history.push(`/posts/${id}/edit`);
   };
+   // Function to handle deletion of the post
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/posts/${id}/`);
@@ -44,7 +48,7 @@ const Post = (props) => {
       // console.log(err);
     }
   };
-
+   // Function to handle liking of the post
   const handleLike = async () => {
     try {
       const { data } = await axiosRes.post("/likes/", { post: id });
@@ -60,7 +64,7 @@ const Post = (props) => {
       // console.log(err);
     }
   };
-
+   // Function to handle unliking of the post
   const handleUnlike = async () => {
     try {
       await axiosRes.delete(`/likes/${like_id}/`);

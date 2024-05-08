@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import styles from "../../styles/EventsPage.module.css"
 import { axiosReq } from '../../api/axiosDefaults';
 
+/* State for editing mode, form errors, and event data*/
 const EventDetails = ({ event, fetchTheDataAgain }) => {
+
     const [editMode, setEditMode] = useState(false)
     const [errors, setErrors] = useState(false)
     const [newEvent, setNewEvent] = useState({
@@ -10,7 +12,7 @@ const EventDetails = ({ event, fetchTheDataAgain }) => {
         description: event.description,
         location: event.location,
         start_time: event.start_time,
-        end_time: event.end_time, 
+        end_time: event.end_time,
         admission_price: event.admission_price,
         website: event.website
     });
@@ -22,11 +24,11 @@ const EventDetails = ({ event, fetchTheDataAgain }) => {
             console.log(error)
         }
     }
-
+     /* Handles changes to the input fields and updates the event state*/
     const handleInputChange = (e) => {
-        console.log(e.target.value,e.target.name)
+        console.log(e.target.value, e.target.name)
         setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
-        // Clear any existing errors for this field
+        /* Clear any existing errors for this field*/
         if (errors[e.target.name]) {
             setErrors({ ...errors, [e.target.name]: null });
         }
@@ -46,17 +48,17 @@ const EventDetails = ({ event, fetchTheDataAgain }) => {
 
         } catch (err) {
             if (err.response?.status !== 401) {
-                // Set errors from response to the form state
+                /* Set errors from response to the form state*/
                 setErrors(err.response?.data);
             }
         }
     };
 
-    console.log(newEvent,"hello newllow")
+    console.log(newEvent, "hello newllow")
     return (
         <>
-            
-{/* this is your event card */}
+
+            {/* this is your event card */}
             <div className={styles.event_item} key={event.id}>
                 <div className={styles.event_title_header}>
                     <div className={styles.event_price_wrapper}>
@@ -70,8 +72,8 @@ const EventDetails = ({ event, fetchTheDataAgain }) => {
                 <a href={event.website} target='_blank' rel='noreferrer'>Event Website</a>
                 <div className={styles.event_dropdown}>
                     <button className={styles.event_delete_btn} onClick={deleteTheEvent}>Delete</button>
-                    <button  className={styles.event_edit_btn} onClick={() => setEditMode(!editMode)}>{!editMode?"Edit":"Close"}</button>
-                  
+                    <button className={styles.event_edit_btn} onClick={() => setEditMode(!editMode)}>{!editMode ? "Edit" : "Close"}</button>
+
                 </div>
             </div>
 
