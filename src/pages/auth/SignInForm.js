@@ -18,14 +18,17 @@ import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { setTokenTimestamp } from "../../utils/utils";
 
 function SignInForm() {
+   // Hook to set the current user context globally
   const setCurrentUser = useSetCurrentUser();
 
+   // State to manage form data for username and password
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
   });
   const { username, password } = signInData;
 
+    // State to store and display any errors from the sign in process
   const [errors, setErrors] = useState({});
 
   const history = useHistory();
@@ -41,7 +44,7 @@ function SignInForm() {
       setErrors(err.response?.data);
     }
   };
-
+  // Handles the submission of the sign in form
   const handleChange = (event) => {
     setSignInData({
       ...signInData,
