@@ -18,7 +18,7 @@ import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
 
-
+// for displaying a post page
 function PostPage() {
   const { id } = useParams();
   const [post, setPost] = useState({ results: [] });

@@ -18,7 +18,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-
+ // Post page function 
 function PostsPage({ message, filter = "" }) {
    // State to manage posts data
   console.log(message, "message", filter, "filter")
