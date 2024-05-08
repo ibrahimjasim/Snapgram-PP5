@@ -9,13 +9,17 @@ import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 
 function CommentCreateForm(props) {
+   /* Props include the post details, functions to update the post and comments list, and the user's profile image and ID */
   const { post, setPost, setComments, profileImage, profile_id } = props;
+   /* State for the content of the new comment */
   const [content, setContent] = useState("");
 
+ /* Function to handle changes in the textarea, updating the state with the new content */
   const handleChange = (event) => {
     setContent(event.target.value);
   };
 
+  /* Function to handle form submission, creating a new comment */
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -41,6 +45,7 @@ function CommentCreateForm(props) {
   };
 
   return (
+    /* Render the form for creating comments */
     <Form className="mt-2" onSubmit={handleSubmit}>
       <Form.Group>
         <InputGroup>

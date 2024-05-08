@@ -8,15 +8,19 @@ import styles from "../../styles/CommentCreateEditForm.module.css";
 function CommentEditForm(props) {
   const { id, content, setShowEditForm, setComments } = props;
 
+  /* State for managing the form content, initialized with the current comment content */
   const [formContent, setFormContent] = useState(content);
 
+  /* Function to update formContent state based on user input in the textarea */
   const handleChange = (event) => {
     setFormContent(event.target.value);
   };
 
+  /* Function to handle form submission, updating the existing comment */
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      /* PUT request to update the comment at the specific id with the new content */
       await axiosRes.put(`/comments/${id}/`, {
         content: formContent.trim(),
       });
