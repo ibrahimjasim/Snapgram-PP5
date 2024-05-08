@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div className={styles.App}>
-      <NavBar />
+      <NavBar /> {/* Navigation bar component */}
       <Container className={styles.Main}>
         <Switch>
           <Route
@@ -44,7 +44,7 @@ function App() {
                 filter={`owner__followed__owner__profile=${profile_id}&`}
               />
             )}
-          />
+          /> {/* Route for displaying feed posts */}
           <Route
             exact
             path="/liked"
@@ -52,20 +52,11 @@ function App() {
               <PostsPage
                 message="No results found. Adjust the search keyword or like a post."
                 filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
-              />
+              /> 
             )}
-          />
-          <Route
-            exact
-            path="/saved"
-            render={() => (
-              <PostsPage
-                message="No saved posts found. Save some posts to see them here."
-                filter={`saved__owner__profile=${profile_id}&ordering=-saved__created_at&`}
-              />
+          /> {/* Route for displaying liked posts */}
 
-            )} />
-
+           {/*  routes for different pages */}
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/posts/create" render={() => <PostCreateForm />} />
@@ -80,19 +71,19 @@ function App() {
             exact
             path="/profiles/:id/edit/username"
             render={() => <UsernameForm />}
-          />
+          />{/* Route for editing username */}
           <Route
             exact
             path="/profiles/:id/edit/password"
             render={() => <UserPasswordForm />}
-          />
+          /> {/* Route for editing password */}
           <Route
             exact
             path="/profiles/:id/edit"
             render={() => <ProfileEditForm />}
-          />
+          /> {/* Route for editing profile */}
 
-          <Route render={() => <p>Page not found!</p>} />
+          <Route render={() => <p>Page not found!</p>} /> {/* Route for handling page not found */}
         </Switch>
       </Container>
     </div>
