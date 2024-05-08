@@ -19,6 +19,7 @@ const UserPasswordForm = () => {
   const { id } = useParams();
   const currentUser = useCurrentUser();
 
+  // State for form data and error handling  // State for form data and error handling
   const [userData, setUserData] = useState({
     new_password1: "",
     new_password2: "",
@@ -26,7 +27,7 @@ const UserPasswordForm = () => {
   const { new_password1, new_password2 } = userData;
 
   const [errors, setErrors] = useState({});
-
+  // Update local state when form fields change
   const handleChange = (event) => {
     setUserData({
       ...userData,
@@ -34,16 +35,18 @@ const UserPasswordForm = () => {
     });
   };
 
+  // Check if the current user is allowed to access this form
   useEffect(() => {
     if (currentUser?.profile_id?.toString() !== id) {
       // redirect user if they are not the owner of this profile
       history.push("/");
     }
   }, [currentUser, history, id]);
-
+  // Handle form submission for password change
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      // Post the new password data to the server
       await axiosRes.post("/dj-rest-auth/password/change/", userData);
       history.goBack();
     } catch (err) {
