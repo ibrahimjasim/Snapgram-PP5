@@ -37,7 +37,8 @@ function ProfilePage() {
 
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
-
+  
+  // Fetch profile and posts data
   useEffect(() => {
     const fetchData = async () => {
       try {

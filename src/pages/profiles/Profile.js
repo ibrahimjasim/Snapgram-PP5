@@ -13,9 +13,11 @@ const Profile = (props) => {
   const { profile, mobile, imageSize = 55 } = props;
   const { id, following_id, image, owner } = profile;
 
+    // Get current user data from context
   const currentUser = useCurrentUser();
+  // Check if the current user is the owner of the profile
   const is_owner = currentUser?.username === owner;
-
+   // Get the function to handle follow/unfollow action from context
   const { handleFollow, handleUnfollow } = useSetProfileData();
 
   return (

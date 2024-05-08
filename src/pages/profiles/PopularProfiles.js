@@ -5,6 +5,7 @@ import Asset from "../../components/Asset";
 import { useProfileData } from "../../contexts/ProfileDataContext";
 import Profile from "./Profile";
 
+// Get popular profiles data using useProfileData hook from context
 const PopularProfiles = ({ mobile }) => {
   const { popularProfiles } = useProfileData();
 
@@ -30,6 +31,7 @@ const PopularProfiles = ({ mobile }) => {
           )}
         </>
       ) : (
+         // Display spinner while popular profiles data is loading
         <Asset spinner />
       )}
     </Container>

@@ -24,24 +24,26 @@ const ProfileEditForm = () => {
   const { id } = useParams();
   const history = useHistory();
   const imageFile = useRef();
-
+   // State to manage form data
   const [profileData, setProfileData] = useState({
     name: "",
     content: "",
     image: "",
   });
   const { name, content, image } = profileData;
-
+   // State to manage form errors
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
     const handleMount = async () => {
       if (currentUser?.profile_id?.toString() === id) {
         try {
+           // Fetch profile data from the server
           const { data } = await axiosReq.get(`/profiles/${id}/`);
           const { name, content, image } = data;
           setProfileData({ name, content, image });
         } catch (err) {
+          // Redirect if the user is not the profile owner
           history.push("/");
         }
       } else {
@@ -51,14 +53,14 @@ const ProfileEditForm = () => {
 
     handleMount();
   }, [currentUser, history, id]);
-
+   // Handle input changes in the form
   const handleChange = (event) => {
     setProfileData({
       ...profileData,
       [event.target.name]: event.target.value,
     });
   };
-
+  // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
