@@ -2,9 +2,8 @@ import { rest } from "msw"
 
 const baseURL = "https://snapgram-api-df7c5b682dbd.herokuapp.com/"
 
-// Array of handlers to manage the mock responses for different API endpoints
+/* Array of handlers to manage the mock responses for different API endpoints*/
 export const handlers = [
-     // Mock handler for GET requests to 'user' endpoint
     rest.get(`${baseURL}dj-rest-auth/user/`, (req, res, ctx) => {
         return res(ctx.json({
             "pk": 4,

@@ -1,4 +1,4 @@
-// AiChat.js
+/* AiChat.js*/
 
 import { useEffect, useState } from "react";
 import styles from "../../styles/Aichat.module.css"

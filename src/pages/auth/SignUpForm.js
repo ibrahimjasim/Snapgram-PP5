@@ -17,16 +17,16 @@ import {
 import axios from "axios";
 
 const SignUpForm = () => {
-   // State to hold the form data for username, password1, and password2
+   /* State to hold the form data for username, password1, and password2*/
   const [signUpData, setSignUpData] = useState({
     username: "",
     password1: "",
     password2: "",
   });
   const { username, password1, password2 } = signUpData;
-   // State to store and display validation errors
+   /* State to store and display validation errors*/
   const [errors, setErrors] = useState({});
-   // Hook for navigation
+   /* Hook for navigation*/
   const history = useHistory();
 
   const handleChange = (event) => {
@@ -35,14 +35,14 @@ const SignUpForm = () => {
       [event.target.name]: event.target.value,
     });
   };
-   // Function to handle form submission
+   /* Function to handle form submission*/
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
       history.push("/signin");
     } catch (err) {
-       // Update state with errors from the server response
+       /* Update state with errors from the server response*/
       setErrors(err.response?.data);
     }
   };

@@ -10,6 +10,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
 
 const Comment = (props) => {
+  /* Destructure props to obtain necessary data for each comment*/
   const {
     profile_id,
     profile_image,
@@ -20,14 +21,16 @@ const Comment = (props) => {
     setPost,
     setComments,
   } = props;
-
+   /* Local state to toggle the visibility of the comment edit form*/
   const [showEditForm, setShowEditForm] = useState(false);
+   /* Fetch the current user from context to determine if the logged-in user is the comment owner*/
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
-
+  /* Handler for deleting a comment*/
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/comments/${id}/`);
+      /* Update the post state to decrement the count of comments*/
       setPost((prevPost) => ({
         results: [
           {
@@ -36,7 +39,7 @@ const Comment = (props) => {
           },
         ],
       }));
-
+           /* Filter out the deleted comment from the comments state*/
       setComments((prevComments) => ({
         ...prevComments,
         results: prevComments.results.filter((comment) => comment.id !== id),
