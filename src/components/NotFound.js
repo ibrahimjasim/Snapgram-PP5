@@ -3,6 +3,7 @@ import NoResults from "../assets/no-results.png";
 import styles from "../styles/NotFound.module.css";
 import Asset from "./Asset";
 
+// NotFound component renders a user-friendly message when a page is not found
 const NotFound = () => {
   return (
     <div className={styles.NotFound}>
