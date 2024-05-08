@@ -1,58 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&family=Yellowtail&display=swap');
+
 .App {
+  /* Styling for the App class */
   font-family: "DM Sans", sans-serif;
   background-color: #B7998F;
   min-height: 100vh;
 }
 
 .Main {
+  /* Styling for the Main class */
   padding-top: 81px;
 }
 
 .Content {
+  /* Styling for the Content class */
   background-color: #E9E6EC;
   padding: 10px;
   border-radius: 2px;
-  border: 1px solid #555555 ;
+  border: 1px solid #555555;
 }
 
 .FillerImage {
+  /* Styling for the FillerImage class */
   object-fit: cover;
   height: 100%;
   width: 100%;
 }
 
 .Image {
+  /* Styling for the Image class */
   max-height: 40vh;
   max-width: 100%;
   object-fit: contain;
 }
 
 * {
+  /* Global styling for all elements */
   box-sizing: border-box;
 }
 
 a {
+  /* Styling for anchor tags */
   color: #555555;
   transition: color ease-in-out 0.3s;
 }
 
 a:hover {
+  /* Styling for anchor tags on hover */
   text-decoration: none;
 }
 
 a:hover i {
+  /* Styling for icons inside anchor tags on hover */
   color: #2142b2;
   transition: color ease-in-out 0.4s;
   transform: translateY(-10px);
 }
 
-
 input[type="file"] {
+  /* Styling for file input */
   display: none;
 }
 
 i {
+  /* Styling for icons */
   color: #cfced3;
   font-size: 1.6rem;
   padding: 7px;
@@ -60,18 +71,21 @@ i {
 }
 
 i:hover {
+  /* Styling for icons on hover */
   cursor: pointer;
   transition: color ease-in-out 0.3s;
   color: #2142b2;
 }
 
 figure {
+  /* Styling for figures */
   text-align: center;
   display: inline-block;
 }
 
 /* scrollbar */
 *::-webkit-scrollbar {
+  /* Styling for the scrollbar */
   width: 5px;
 }
 *::-webkit-scrollbar-track {
