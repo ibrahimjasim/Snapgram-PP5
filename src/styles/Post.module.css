@@ -1,24 +1,29 @@
 .Post {
-    background-color: #ffffff;
-    border: 1px solid #dadadf;
-    border-radius: 2px;
-    margin-bottom: 16px;
-    text-align: center;
-  }
-  
-  .Post figure,
-  h5 {
-    margin: 0 0;
-  }
-  
-  .Heart {
-    color: #f85032;
-  }
-  
-  .Heart:hover {
-    color: #2142b2;
-  }
-  
-  .HeartOutline:hover {
-    color: #f85032;
-  }
+  /* Styling for the Post class */
+  background-color: #ffffff;
+  border: 1px solid #dadadf;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.Post figure,
+h5 {
+  /* Styling for figure and h5 inside Post class */
+  margin: 0 0;
+}
+
+.Heart {
+  /* Styling for the Heart class */
+  color: #f85032;
+}
+
+.Heart:hover {
+  /* Styling for the Heart class on hover */
+  color: #2142b2;
+}
+
+.HeartOutline:hover {
+  /* Styling for the HeartOutline class on hover */
+  color: #f85032;
+}
