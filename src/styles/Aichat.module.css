@@ -1,11 +1,12 @@
+/* Styles for the chat container */
 .ai_chat_container {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
+/* Styles for the empty response message */
 .empty_response {
     margin: auto;
     width: fit-content;
@@ -16,6 +17,7 @@
     border-radius: 10px;
 }
 
+/* Styles for the chat box container */
 .chat_box {
     width: 95vw;
     min-height: 80vh;
@@ -24,9 +26,9 @@
     overflow: auto;
     display: flex;
     flex-direction: column;
-    /* background-color: #202021; */
 }
 
+/* Styles for the messages section inside the chat box */
 .messages {
     flex: 1;
     padding: 20px;
@@ -34,7 +36,7 @@
     max-height: 80vh;
 }
 
-
+/* Styles for the loader animation */
 .loader {
     width: 65px;
     height: 117px;
@@ -49,16 +51,7 @@
     inset: 0;
     background: #ff8001;
     box-shadow: 0 0 0 50px;
-    clip-path: polygon(100% 0,
-            23% 46%,
-            46% 44%,
-            15% 69%,
-            38% 67%,
-            0 100%,
-            76% 57%,
-            53% 58%,
-            88% 33%,
-            60% 37%);
+    clip-path: polygon(100% 0, 23% 46%, 46% 44%, 15% 69%, 38% 67%, 0 100%, 76% 57%, 53% 58%, 88% 33%, 60% 37%);
 }
 
 .loader:after {
@@ -73,25 +66,27 @@
     }
 }
 
+/* Styles for the message paragraphs */
 .message p {
     margin: 0;
 }
 
+/* Styles for the right-aligned messages */
 .message_right {
-  
     width: 100%;
     font-size: 20px;
     align-self: flex-end;
 }
 
+/* Styles for the question paragraph */
 .question_para {
     font-size: 16px;
     border-radius: 10px;
     padding: 20px;
     width: fit-content;
-
 }
 
+/* Styles for the answer paragraph */
 .answer_para {
     background-color: #0d0c0c;
     font-size: 16px;
@@ -106,6 +101,7 @@
     color: #ffffff;
 }
 
+/* Styles for the input section */
 .input {
     display: flex;
     padding: 10px;
@@ -134,14 +130,14 @@
     background-color: #0056b3;
 }
 
+/* Styles for the message right box */
 .message_right_box {
     display: flex;
     gap: 10px;
     align-items: center;
-
 }
 
-.message_right_box>img {
+.message_right_box > img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
