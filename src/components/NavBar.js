@@ -13,22 +13,27 @@ import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import { removeTokenTimestamp } from "../utils/utils";
 
+// NavBar component handles the navigation and user authentication actions
 const NavBar = () => {
+  // Current user state management hooks
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
 
+  // Custom hook for handling click outside a specified element to toggle UI elements
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
-
+  // Handle user sign-out
   const handleSignOut = async () => {
     try {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
       removeTokenTimestamp();
     } catch (err) {
+      // Handle error during sign out
     }
   };
 
+  // Navigation link for creating a new post
   const addPostIcon = (
     <NavLink
       className={styles.NavLink}
@@ -37,10 +42,12 @@ const NavBar = () => {
     >
       <i className="far fa-plus-square"></i>
     </NavLink>
-
   );
+
+  // Icons displayed when user is logged in
   const loggedInIcons = (
     <>
+      { /* Links for various user functions and profile navigation */ }
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
@@ -55,7 +62,6 @@ const NavBar = () => {
       >
         <i className="fas fa-heart"></i>
       </NavLink>
-   
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
@@ -63,7 +69,6 @@ const NavBar = () => {
       >
         <i className="fas fa-robot"></i>
       </NavLink>
-
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
@@ -71,7 +76,6 @@ const NavBar = () => {
       >
         <i className="fa-solid fa-calendar-days"></i>
       </NavLink>
-      
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
@@ -79,7 +83,6 @@ const NavBar = () => {
       >
         <i className="fa-regular fa-address-card"></i>
       </NavLink>
-
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>
       </NavLink>
@@ -91,6 +94,8 @@ const NavBar = () => {
       </NavLink>
     </>
   );
+
+  // Icons displayed when user is logged out
   const loggedOutIcons = (
     <>
       <NavLink
@@ -115,7 +120,7 @@ const NavBar = () => {
       <Container>
         <NavLink to="/">
           <Navbar.Brand className={styles.logo}>
-             Snapgram
+            Snapgram
           </Navbar.Brand>
         </NavLink>
         {currentUser && addPostIcon}
@@ -130,7 +135,6 @@ const NavBar = () => {
             >
               <i className="fas fa-home"></i>
             </NavLink>
-
             {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>
         </Navbar.Collapse>
