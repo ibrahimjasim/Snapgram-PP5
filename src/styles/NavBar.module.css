@@ -1,17 +1,19 @@
 .NavBar {
+  /* Styling for the NavBar class */
   background-color: #C6B9B7;
   border: 1px solid #171729;
 }
 
 .NavLink {
+  /* Styling for the NavLink class */
   padding: 5px;
   text-align: center;
   align-items: center;
   display: flex;
-
 }
 
 .NavLink i {
+  /* Styling for icons inside NavLink class */
   align-items: center;
   display: flex;
   padding: 15px;
@@ -20,19 +22,21 @@
 }
 
 .NavLink i:hover {
-  color: #4A90E2; 
-  cursor: pointer; 
+  /* Styling for icons inside NavLink class on hover */
+  color: #4A90E2;
+  cursor: pointer;
 }
 
 .logo {
+  /* Styling for the logo class */
   font-family: "Yellowtail", cursive;
   font-weight: 400;
   font-style: normal;
   font-size: 2rem;
-  padding-bottom: 15px;}
-
+  padding-bottom: 15px;
+}
 
 .Active i {
+  /* Styling for icons inside Active class */
   color: #ffffff;
-
 }
