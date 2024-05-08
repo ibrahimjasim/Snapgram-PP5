@@ -1,20 +1,23 @@
 .Form {
-    border: none;
-    border-bottom: 2px #00d1ff solid;
-  }
-  
-  .Button {
-    border: none;
-    background-color: #242a3d;
-    color: aliceblue;
-    border-radius: 100px;
-    padding: 4px 10px;
-    min-width: 75px;
-    margin: 5px;
-  }
-  
-  .Button:hover {
-    cursor: pointer;
-    background-color: aliceblue;
-    color: #242a3d;
-  }
+  /* Styling for the Form class */
+  border: none;
+  border-bottom: 2px #7E605F solid;
+}
+
+.Button {
+  /* Styling for the Button class */
+  border: none;
+  background-color: #242a3d;
+  color: aliceblue;
+  border-radius: 100px;
+  padding: 4px 10px;
+  min-width: 75px;
+  margin: 5px;
+}
+
+.Button:hover {
+  /* Styling for the Button class on hover */
+  cursor: pointer;
+  background-color: aliceblue;
+  color: #242a3d;
+}

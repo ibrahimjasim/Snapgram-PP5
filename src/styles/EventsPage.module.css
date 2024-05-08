@@ -1,44 +1,48 @@
 .events_form {
+    /* Styling for the events_form class */
     display: flex;
     flex-direction: column;
     gap: 15px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 15px;
     border-radius: 10px;
-
-}
-
-.events_form>input {
+  }
+  
+  .events_form > input {
+    /* Styling for inputs inside the events_form class */
     height: 35px;
     border-radius: 5px;
     border: none;
     outline: none;
     padding: 10px;
-}
-
-.events_form>button {
+  }
+  
+  .events_form > button {
+    /* Styling for buttons inside the events_form class */
     background-color: #7E605F;
     color: white;
     padding: 10px;
     border: none;
     border-radius: 10px;
-}
-
-.events_container {
+  }
+  
+  .events_container {
+    /* Styling for the events_container class */
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-top: 20px;
-}
-
-.event_item {
+  }
+  
+  .event_item {
+    /* Styling for the event_item class */
     padding: 10px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-
-}
-
-.event_delete_btn {
+  }
+  
+  .event_delete_btn {
+    /* Styling for the event_delete_btn class */
     background-color: red;
     padding: 10px;
     border: none;
@@ -46,19 +50,19 @@
     color: white;
     font-weight: bold;
     min-width: 70px;
-
-}
-
-.event_dropdown {
+  }
+  
+  .event_dropdown {
+    /* Styling for the event_dropdown class */
     display: flex;
     gap: 10px;
     margin-top: 10px;
     width: fit-content;
-
     float: right;
-}
-
-.event_edit_btn {
+  }
+  
+  .event_edit_btn {
+    /* Styling for the event_edit_btn class */
     background-color: grey;
     padding: 10px;
     border: none;
@@ -66,43 +70,46 @@
     color: white;
     font-weight: bold;
     min-width: 70px;
-
-}
-
-.event_item p,
-h1,
-h2 {
+  }
+  
+  .event_item p,
+  h1,
+  h2 {
+    /* Styling for paragraph, h1, h2 inside the event_item class */
     outline: none;
     border: none;
-}
-
-.event_item>a {
+  }
+  
+  .event_item > a {
+    /* Styling for anchor tags inside the event_item class */
     color: #E9E6EC;
-}
-
-.event_item>a:hover {
+  }
+  
+  .event_item > a:hover {
+    /* Styling for anchor tags inside the event_item class on hover */
     color: red;
-}
-
-.event_price_wrapper {
+  }
+  
+  .event_price_wrapper {
+    /* Styling for the event_price_wrapper class */
     display: flex;
     justify-content: space-between;
-
-}
-
-.price_text {
+  }
+  
+  .price_text {
+    /* Styling for the price_text class */
     background-color: white;
-
     color: black;
     border-radius: 30px;
     padding: 10px;
     height: fit-content;
     font-size: 22px;
-}
-
-.event_title_header {
+  }
+  
+  .event_title_header {
+    /* Styling for the event_title_header class */
     display: flex;
     flex-direction: column;
     gap: 5px;
     font-weight: bold;
-}
+  }

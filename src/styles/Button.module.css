@@ -1,4 +1,5 @@
 .Button {
+  /* Styling for the button element */
   font-size: 1rem;
   align-self: center;
   border: none; 
@@ -7,63 +8,67 @@
   margin-right: 10px;
   background: none; 
   cursor: pointer; 
-  }
-  
-  .Button:hover {
-    opacity: 0.8;
-    border-color: transparent;
-    cursor: pointer;
-  }
-  
-  .Button:hover:active {
-    background-color: #2142b2 !important;
-  }
-  
-  .Button:active {
-    background-color: #2142b2 !important;
-  }
-  
-  .Button:focus {
-    background-color: #2142b2;
-  }
-  
-  .Wide {
-    padding: 10px 50px;
-    width: 100%;
-  }
-  
-  .Blue,
-  .BlueOutline:hover,
-  .Bright:hover {
-    background-color: #7E605F;
-    color: #ffffff;
-  }
-  
-  .BlueOutline,
-  .Blue:hover {
-    /* border: 1px solid #2142b2; */
-    background-color: #ffffff;
-    color: #2142b2;
-  }
-  
-  .Black,
-  .BlackOutline:hover {
-    /* background-color: #242a3d;
-    color: white; */
-    color: rgb(11, 11, 11);
-  }
-  
-  .Black:hover,
-  .BlackOutline {
-    /* background-color: #dadadf;
-    color: #242a3d;
-    border-color: #242a3d; */
-    background-color: aliceblue;
-    color: #242a3d;
-    transform: translateY(-5px);
-  }
-  
-  .Bright {
-    background-color: #2ed9ff;
-    color: #2142b2;
-  }
+}
+
+.Button:hover {
+  /* Styling for the button element on hover */
+  opacity: 0.8;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.Button:hover:active {
+  /* Styling for the button element when hovered and active */
+  background-color: #2142b2 !important;
+}
+
+.Button:active {
+  /* Styling for the button element when active */
+  background-color: #2142b2 !important;
+}
+
+.Button:focus {
+  /* Styling for the button element when focused */
+  background-color: #2142b2;
+}
+
+.Wide {
+  /* Styling for the wide class */
+  padding: 10px 50px;
+  width: 100%;
+}
+
+.Blue,
+.BlueOutline:hover,
+.Bright:hover {
+  /* Styling for the Blue, BlueOutline on hover, and Bright on hover classes */
+  background-color: #7E605F;
+  color: #ffffff;
+}
+
+.BlueOutline,
+.Blue:hover {
+  /* Styling for the BlueOutline and Blue on hover classes */
+  background-color: #ffffff;
+  color: #2142b2;
+}
+
+.Black,
+.BlackOutline:hover {
+  /* Styling for the Black and BlackOutline on hover classes */
+  color: rgb(11, 11, 11);
+}
+
+.Black:hover,
+.BlackOutline {
+  /* Styling for the Black on hover and BlackOutline classes */
+  background-color: aliceblue;
+  color: #242a3d;
+  transform: translateY(-5px);
+}
+
+.Bright {
+  /* Styling for the Bright class */
+  background-color: #2ed9ff;
+  color: #2142b2;
+}
